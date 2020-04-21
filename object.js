@@ -8,5 +8,11 @@ var car = {
 		console.log("engine is stoped");
 	}
 }
+
+var person = {
+    name : "gwanwoo",
+    age : 32
+}
+
 console.log(car.name);
 car.start();
