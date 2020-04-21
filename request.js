@@ -1,6 +1,9 @@
 const request = require('request');
-request('https://www.naver.com', function (error, response, body) {
-  console.error('error:', error); 
-  console.log('statusCode:', response && response.statusCode); 
-  console.log('body:', body); 
+var parseString = require('xml2js').parseString;
+
+request('http://www.weather.go.kr/weather/forecast/mid-term-rss3.jsp?stnld=109', function (error, response, body) {
+  parseString(body, function(err, result){
+    var parsedData = result;
+    console.log(parsedData.rss.channel[0].description);
+  })
 });
