@@ -34,6 +34,8 @@ cars = [car01, car02, car03]
 
 //#work2
 // for, if 구문을 사용하여 bmw 라는 이름의 자동차를 찾은 후 'bmw 차를 찾았습니다' 라고 출력하기
-
-console.log(cars);
-console.log(cars[2].name);
+for(var i = 0; i < cars.length; i++){
+    if(cars[i].name == "BMW"){
+        console.log('bmw 차를 찾았습니다');
+    }
+}
