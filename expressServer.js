@@ -15,6 +15,11 @@ app.get('/test', function(req, res){
     res.render('ejsPage');
 })
 
+app.post('/getData', function(req, res){
+    var data = req.body.inputData;
+    console.log(data);
+})
+
 
  
 app.listen(3000)

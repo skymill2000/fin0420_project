@@ -112,6 +112,9 @@
 					<div class="form-divider">
                         <input type="text" id="inputText">
                         <button type="button" id="sendBtn">send data</button>
+                        <input type="text" id="inputText2">
+                        <button type="button" id="sendBtn2">send data</button>
+
                     </div>
 				</div>
 
@@ -151,10 +154,22 @@
     <script src="js/global.script.js"></script>
     <script>
         var data = $("#inputText").val();
-
         $("#sendBtn").click(function(){
-            alert($("#inputText").val());
             console.log($("#inputText").val())
+            $.ajax({
+                url: '/getData',
+                type : 'POST',
+                data : {
+                    inputData : $("#inputText").val()
+                },
+                success:function(data){
+
+                }
+            })
+        })
+        $("#sendBtn2").click(function(){
+            alert($("#inputText2").val());
+            console.log($("#inputText2").val())
         })
     </script>
 </body>
