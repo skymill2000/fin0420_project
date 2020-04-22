@@ -31,15 +31,18 @@ app.get('/test', function(req, res){
 
 app.post('/getData', function(req, res){
     var data = req.body.inputData;
+    var resultData;
     console.log(data);
     console.log(req.body);
     connection.query('SELECT * FROM fintech.user WHERE name = ?', [data] , function (error, results, fields) {
       if (error) throw error;
       else {
+        resultData = results 
         console.log(results)
+        res.json(resultData);
       }
     });    
-    res.json(results);
+
 })
 
 
