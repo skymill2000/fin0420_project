@@ -51,7 +51,8 @@ app.get('/authResult', function(req, res){
     }
   }
   request(option, function (error, response, body) {
-    console.log(body);
+    var parseData = JSON.parse(body);
+    res.render('resultChild',{data : parseData})
   });
   
 })
