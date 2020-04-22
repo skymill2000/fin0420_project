@@ -33,7 +33,7 @@ app.post('/getData', function(req, res){
     var data = req.body.inputData;
     console.log(data);
     console.log(req.body);
-    connection.query('SELECT * FROM fintech.user WHERE = ?', [data] , function (error, results, fields) {
+    connection.query('SELECT * FROM fintech.user WHERE name = ?', [data] , function (error, results, fields) {
       if (error) throw error;
       else {
         console.log(results)
