@@ -29,6 +29,10 @@ app.get('/test', function(req, res){
     res.render('ejsPage');
 })
 
+app.get('/signup', function(req, res){
+  res.render('signup')
+})
+
 app.post('/getData', function(req, res){
     var data = req.body.inputData;
     var resultData;
