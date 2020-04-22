@@ -160,10 +160,11 @@
                 url: '/getData',
                 type : 'POST',
                 data : {
-                    inputData : $("#inputText").val()
+                    inputData : $("#inputText").val(),
+                    dataMemberId : 'skymill2000'
                 },
                 success:function(data){
-
+                    console.log(data);
                 }
             })
         })

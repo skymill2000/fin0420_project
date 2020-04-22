@@ -21,6 +21,8 @@ app.get('/test', function(req, res){
 app.post('/getData', function(req, res){
     var data = req.body.inputData;
     console.log(data);
+    console.log(req.body);
+    res.json(1);
 })
 
 
