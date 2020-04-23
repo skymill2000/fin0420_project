@@ -2,6 +2,8 @@
 const express = require('express')
 var mysql = require('mysql');
 var request = require('request');
+var jwt = require('jsonwebtoken');
+
 const app = express()
  
 app.set('views', __dirname + '/views');
@@ -97,8 +99,8 @@ app.post('/login', function(req, res){
         var tokenKey = "f@i#n%tne#ckfhlafkd0102test!@#%"
         jwt.sign(
           {
-              userId : results[0].id,
-              userEmail : results[0].user_email
+              userId : result[0].id,
+              userEmail : result[0].user_email
           },
           tokenKey,
           {
