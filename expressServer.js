@@ -84,7 +84,20 @@ app.post('/signup', function(req, res){
 
 
 app.post('/login', function(req, res){
-
+  var userEmail = req.body.userEmail;
+  var userPassword = req.body.userPassword;
+  var sql = "SELECT * FROM user WHERE user_email = ?"
+  connection.query(sql, [userEmail], function(err, result){
+    if(result.length == 0){
+      //no member
+    }
+    else {
+      if(userPassword == result[0].user_password){
+        //jwt token 
+        console.log("is member!")
+      }
+    }
+  })
 })
 
  

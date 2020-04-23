@@ -166,6 +166,17 @@
             var userEmail = $("#userEmail").val();
             var userPassword = $("#userPassword").val();
             console.log(userEmail);
+            $.ajax({
+                url:'http://localhost:3000/login',
+                type : 'POST',
+                data : {
+                    userEmail : userEmail,
+                    userPassword : userPassword,
+                },
+                success:function(data){
+                    console.log(data);
+                }
+            })       
         })
     </script>
 	
