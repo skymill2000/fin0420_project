@@ -93,7 +93,25 @@ app.post('/login', function(req, res){
     }
     else {
       if(userPassword == result[0].user_password){
-        //jwt token 
+        //jwt token
+        var tokenKey = "f@i#n%tne#ckfhlafkd0102test!@#%"
+        jwt.sign(
+          {
+              userId : results[0].id,
+              userEmail : results[0].user_email
+          },
+          tokenKey,
+          {
+              expiresIn : '10d',
+              issuer : 'fintech.admin',
+              subject : 'user.login.info'
+          },
+          function(err, token){
+              console.log('로그인 성공', token)
+              res.json(token)
+          }
+        )
+
         console.log("is member!")
       }
     }
