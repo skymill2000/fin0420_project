@@ -3,6 +3,7 @@ const express = require('express')
 var mysql = require('mysql');
 var request = require('request');
 var jwt = require('jsonwebtoken');
+var auth = require('./lib/auth')
 
 const app = express()
  
@@ -38,6 +39,10 @@ app.get('/signup', function(req, res){
 //#work5 login page add
 app.get('/login', function(req, res){
   res.render('login');
+})
+
+app.get('/authTest',auth, function(req, res){
+  res.json('welcome')
 })
 
 
