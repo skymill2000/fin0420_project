@@ -191,7 +191,8 @@
             var userPassword = $("#userPassword").val();
             var userAccessToken = $("#userAccessToken").val();
             var userRefreshToken = $("#userRefreshToken").val();
-            var userSeqNo = $("#userSeqNo").val();
+			var userSeqNo = $("#userSeqNo").val();
+			console.log(userName);
             $.ajax({
                 url:'http://localhost:3000/signup',
                 type : 'POST',

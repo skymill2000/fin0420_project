@@ -34,6 +34,10 @@ app.get('/signup', function(req, res){
 })
 
 //#work5 login page add
+app.get('/login', function(req, res){
+  res.render('login');
+})
+
 
 app.get('/authResult', function(req, res){
   var authCode = req.query.code;
@@ -66,6 +70,7 @@ app.post('/signup', function(req, res){
   var userRefreshToken = req.body.userRefreshToken
   var userSeqNo = req.body.userSeqNo
   console.log(userName,userPassword ,userAccessToken)
+  console.log(req.body);
   var sql = "INSERT INTO `fintech`.`user`(`user_email`,`user_password`, `accesstoken`,  `refreshtoken`, `userseqno`)"+
   " VALUES (?,?,?,?,?);"
   connection.query(sql, [userEmail, userPassword, userAccessToken, userRefreshToken, userSeqNo] , function (error, results, fields) {
@@ -77,22 +82,10 @@ app.post('/signup', function(req, res){
   });    
 })
 
-app.post('/getData', function(req, res){
-    var data = req.body.inputData;
-    var resultData;
-    console.log(data);
-    console.log(req.body);
-    connection.query('SELECT * FROM fintech.user WHERE name = ?', [data] , function (error, results, fields) {
-      if (error) throw error;
-      else {
-        resultData = results 
-        console.log(results)
-        res.json(resultData);
-      }
-    });    
+
+app.post('/login', function(req, res){
 
 })
-
 
  
 app.listen(3000)
