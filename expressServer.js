@@ -33,6 +33,8 @@ app.get('/signup', function(req, res){
   res.render('signup')
 })
 
+//#work5 login page add
+
 app.get('/authResult', function(req, res){
   var authCode = req.query.code;
   console.log(authCode);
