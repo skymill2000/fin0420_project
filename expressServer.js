@@ -41,6 +41,10 @@ app.get('/login', function(req, res){
   res.render('login');
 })
 
+app.get('/main', function(req, res){
+  res.render('main');
+})
+
 app.get('/authTest',auth, function(req, res){
   res.json('welcome')
 })
@@ -123,6 +127,23 @@ app.post('/login', function(req, res){
       }
     }
   })
+})
+
+app.post('/list', function(req, res){
+    //#work6 requsest url https://testapi.openbanking.or.kr/v2.0/user/me?user_seq_no=1100034736
+    var option = {
+      method : "GET",
+      url : "",
+      headers : {
+
+      },
+      qs : {
+      }
+    }
+    request(option, function (error, response, body) {
+      var parseData = JSON.parse(body);
+      res.json(parseData);
+    });
 })
 
  
