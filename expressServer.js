@@ -63,7 +63,16 @@ app.post('/signup', function(req, res){
   var userAccessToken = req.body.userAccessToken
   var userRefreshToken = req.body.userRefreshToken
   var userSeqNo = req.body.userSeqNo
-  console.log(userName, userAccessToken)
+  console.log(userName,userPassword ,userAccessToken)
+  var sql = "INSERT INTO `fintech`.`user`(`user_email`,`user_password`, `accesstoken`,  `refreshtoken`, `userseqno`)"+
+  " VALUES (?,?,?,?,?);"
+  connection.query(sql, [userEmail, userPassword, userAccessToken, userRefreshToken, userSeqNo] , function (error, results, fields) {
+    if (error) throw error;
+    else {
+      console.log(this.sql);
+      res.json(1);
+    }
+  });    
 })
 
 app.post('/getData', function(req, res){
