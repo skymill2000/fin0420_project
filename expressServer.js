@@ -45,6 +45,10 @@ app.get('/main', function(req, res){
   res.render('main');
 })
 
+app.get('/balance', function(req, res){
+  res.render('balance')
+})
+
 app.get('/authTest',auth, function(req, res){
   res.json('welcome')
 })
@@ -154,5 +158,9 @@ app.post('/list', auth, function(req, res){
     })
 })
 
+app.post('/balance', auth, function(req, res){
+  //work7 get User Data from mysql(request.decoded), 
+  //balance open api calling
+});
  
 app.listen(3000)
