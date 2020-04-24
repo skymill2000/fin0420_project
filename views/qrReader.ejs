@@ -154,7 +154,7 @@
                 url:'http://localhost:3000/withdraw',
 				type : 'POST',
 				headers : {
-					'x-access-token' : sessionStorage.getItem('jwtToken')
+					'ourtoken' : sessionStorage.getItem('jwtToken')
 				},
                 data : {
 					amount : price,
