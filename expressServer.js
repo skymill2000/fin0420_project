@@ -53,6 +53,10 @@ app.get('/qrcode', function(req, res){
   res.render('qrcode');
 })
 
+app.get('/qr', function(req, res){
+  res.render('qrReader')
+})
+
 app.get('/authTest',auth, function(req, res){
   res.json('welcome')
 })
