@@ -147,6 +147,26 @@
 	<script src="js/global.script.js"></script>
 	<script>
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    $.ajax({
+        url:'http://localhost:3000/withdraw',
+        type : 'POST',
+        headers : {
+            'ourtoken' : sessionStorage.getItem('jwtToken')
+        },
+        data : {
+            amount : "1000",
+            fin_use_num : "199159919057870970470954"
+        },
+        success:function(data){
+                if(data == 1){
+                    alert('결재완료')
+                }
+                else {
+                alert(data);
+                }
+        }
+    });
+
       scanner.addListener('scan', function (content) {
 		alert(content);
 		var price = prompt("가격을 입력해 주세요")
