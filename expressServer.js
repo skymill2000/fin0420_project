@@ -49,6 +49,10 @@ app.get('/balance', function(req, res){
   res.render('balance')
 })
 
+app.get('/qrcode', function(req, res){
+  res.render('qrcode');
+})
+
 app.get('/authTest',auth, function(req, res){
   res.json('welcome')
 })
