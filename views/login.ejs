@@ -175,7 +175,10 @@
                 },
                 success:function(data){
                     console.log(data);
-                    sessionStorage.setItem('jwtToken', data);
+					sessionStorage.setItem('jwtToken', data);
+					if(data.length > 10){
+						window.location.href = "/main"
+					}
                 }
             })       
         })

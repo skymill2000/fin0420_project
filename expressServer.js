@@ -186,7 +186,45 @@ app.post('/balance', auth, function(req, res){
       res.json(parseData);
     });
 
-  })
-});
+    })
+  });
  
+  app.post('/transactionlist', auth, function(req, res){
+    var countnum = Math.floor(Math.random() * 1000000000) + 1;
+    var transId = "T991599190U" + countnum;
+  
+    var user = req.decoded;
+  
+    var finUseNum = req.body.fin_use_num;
+    
+    var sql = "SELECT * FROM user WHERE id = ?"
+    connection.query(sql,[user.userId], function(err, result){
+      console.log(result);
+      var option = {
+        method : "GET",
+        url : "https://testapi.openbanking.or.kr/v2.0/account/transaction_list/fin_num",
+        headers : {
+          'Authorization' : 'Bearer ' + result[0].accesstoken
+        },
+        qs : {
+          bank_tran_id : transId,
+          fintech_use_num : finUseNum,
+          inquiry_type : "A",
+          inquiry_base : 'D',
+          from_date : '20190101',
+          to_date : '20190101',
+          sort_order : 'D',
+          tran_dtime : '20200424165200'
+        }
+      }
+      request(option, function (error, response, body) {
+        console.log(body)
+        var parseData = JSON.parse(body);
+        res.json(parseData);
+      });
+  
+      })
+    });
+  
+
 app.listen(3000)
